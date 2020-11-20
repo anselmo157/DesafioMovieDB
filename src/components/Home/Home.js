@@ -53,6 +53,8 @@ export default function Home({ navigation }) {
         return (
             <View>
                 <TouchableOpacity onPress={() => navigation.navigate('About', {
+                    imageAbout: '../../../assets/images.jpg',
+                    about:'O agente do FBI Frank Castle se transforma em um justiceiro após sua esposa e filho terem sido assassinados por criminosos. Ele é gravemente ferido no ataque e considerado morto por Howard Saint, que ordenou o golpe. Após sua recuperação, Castle se torna um vigilante fortemente armado que não para por nada até se vingar de Saint e desmoronar seu império.',
                     id: 30,
                 })}>
                     <Image
