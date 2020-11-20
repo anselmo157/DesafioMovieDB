@@ -1,10 +1,19 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import { View, Text, Image } from 'react-native'
+import styles from './styles'
 
-export default function About({route}) {
-    return(
+export default function About({ route }) {
+
+    return (
         <View>
-            <Text>Esse é o componente de Sobre do sistema {route.params.id}</Text>
+            <Image
+                style={styles.image}
+                source={require('../../../assets/images.jpg')}
+            />
+            <Text style={styles.title}>O Justiceiro</Text>
+            <View style={styles.boxAbout}>
+                <Text style={styles.textAbout}>{route.params.about}</Text>
+            </View>
         </View>
     )
 }
