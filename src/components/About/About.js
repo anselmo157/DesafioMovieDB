@@ -1,19 +1,22 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Image, Text} from 'react-native'
 import styles from './styles'
+import CustomText from '../Accessibility/CustomText'
+import FloatingButton from '../Accessibility/FloatingButton'
 
 export default function About({ route }) {
-
     return (
-        <View>
+        <View style={{flex: 1}}>
             <Image
                 style={styles.image}
                 source={require('../../../assets/images.jpg')}
             />
             <Text style={styles.title}>O Justiceiro</Text>
             <View style={styles.boxAbout}>
-                <Text style={styles.textAbout}>{route.params.about}</Text>
+                <CustomText style={styles.textAbout}>{route.params.about}</CustomText>
             </View>
+            <FloatingButton/>
         </View>
+        
     )
 }

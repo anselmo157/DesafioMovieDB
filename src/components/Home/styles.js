@@ -25,6 +25,11 @@ export default StyleSheet.create({
         right: 20,
         top: 14
     },
+    themeIcon: {
+        position: 'absolute',
+        right: 20,
+        top: 14
+    },
     carousel: {
         flex: 1,
         overflow: 'visible'

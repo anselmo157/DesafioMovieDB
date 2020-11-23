@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react'
-import { View, Text, Button, FlatList, TouchableOpacity, Image, Dimensions } from 'react-native'
+import { View, FlatList, TouchableOpacity, Image, Dimensions, StyleSheet } from 'react-native'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
+import CustomText from '../Accessibility/CustomText'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Carousel from 'react-native-snap-carousel'
+import FloatingButton from '../Accessibility/FloatingButton'
 import styles from './styles'
 
 const windowWidth = Dimensions.get('window').width;
@@ -20,10 +22,11 @@ const DATA = [
 ];
 
 const Item = ({ item }) => (
-    <Text style={styles.title}>{item.title}</Text>
+    <CustomText style={styles.title}>{item.title}</CustomText>
 );
 
 export default function Home({ navigation }) {
+
     const carouselRef = useRef(null);
     const [selectedId, setSelectedId] = useState(null);
     const [lista, setlista] = useState([
@@ -54,15 +57,17 @@ export default function Home({ navigation }) {
             <View>
                 <TouchableOpacity onPress={() => navigation.navigate('About', {
                     imageAbout: '../../../assets/images.jpg',
-                    about:'O agente do FBI Frank Castle se transforma em um justiceiro após sua esposa e filho terem sido assassinados por criminosos. Ele é gravemente ferido no ataque e considerado morto por Howard Saint, que ordenou o golpe. Após sua recuperação, Castle se torna um vigilante fortemente armado que não para por nada até se vingar de Saint e desmoronar seu império.',
+                    about: 'O agente do FBI Frank Castle se transforma em um justiceiro após sua esposa e filho terem sido assassinados por criminosos.',
                     id: 30,
                 })}>
                     <Image
                         source={require('../../../assets/images.jpg')}
                         style={styles.carouselImg}
                     />
-                    <Text style={styles.carouselText}>O Justiceiro</Text>
                 </TouchableOpacity>
+                <View style={styles_.title_view}>
+                    <CustomText>Uma Fantastica Fabrica de Chocolate</CustomText>
+                </View>
             </View>
         )
     }
@@ -70,10 +75,12 @@ export default function Home({ navigation }) {
     const renderItem = ({ item }) => {
 
         return (
-            <View>
-                <Item
-                    item={item}
-                />
+            <View style={{ height: 475 }}>
+                <View style={{ left: '5%', paddingBottom: 10 }}>
+                    <Item
+                        item={item}
+                    />
+                </View>
                 <Carousel
                     style={styles.carousel}
                     ref={carouselRef}
@@ -88,26 +95,36 @@ export default function Home({ navigation }) {
     };
 
     return (
-        <ScrollView>
-            <View style={styles.searchBoxContainer}>
-                <TextInput
-                    placeholder='Buscar Filmes'
-                    placeholderTextColor='#666'
-                    style={styles.searchBox}
+        <View>
+            <ScrollView>
+                <View style={styles.searchBoxContainer}>
+                    <TextInput
+                        placeholder='Buscar Filmes'
+                        placeholderTextColor='#666'
+                        style={styles.searchBox}
+                    />
+                    <Icon
+                        name='search'
+                        size={22}
+                        color='#666'
+                        style={styles.searchBoxIcon}
+                    />
+                </View>
+                <FlatList
+                    data={DATA}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                    extraData={selectedId}
                 />
-                <Icon
-                    name='search'
-                    size={22}
-                    color='#666'
-                    style={styles.searchBoxIcon}
-                />
-            </View>
-            <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                extraData={selectedId}
-            />
-        </ScrollView>
+            </ScrollView>
+            <FloatingButton />
+        </View>
     )
 }
+
+const styles_ = StyleSheet.create({
+    title_view: {
+        alignItems: 'center',
+        top: 5
+    }
+})
