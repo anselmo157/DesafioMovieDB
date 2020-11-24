@@ -95,7 +95,7 @@ export default function Home({ navigation }) {
     };
 
     return (
-        <View>
+        <View style={styles.theme}>
             <ScrollView>
                 <View style={styles.searchBoxContainer}>
                     <TextInput
