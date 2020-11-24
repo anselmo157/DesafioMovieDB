@@ -6,7 +6,7 @@ import Home from './components/Home/Home'
 import About from './components/About/About'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import Icon from 'react-native-vector-icons/Entypo'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const reducer = (state = 22, action) => {
     switch (action.type) {
@@ -44,14 +44,14 @@ export default function App() {
                                 alignSelf: 'center',
                                 left: '7%'
                             },
-                            headerRight: () => {
+                            headerRight: () => (
                                 <Icon
-                                    name='light-bulb'
-                                    size={25}
-                                    color='#FFF'
-                                    style={{ right: '75%' }}
+                                    name='theme-light-dark'
+                                    size = {24}
+                                    style={{ right: '80%', color: '#fff' }}
+
                                 />
-                            }
+                            ),
                         }}
                     />
                     <Stack.Screen
