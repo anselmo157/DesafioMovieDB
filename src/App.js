@@ -47,7 +47,7 @@ export default function App() {
                             headerRight: () => (
                                 <Icon
                                     name='theme-light-dark'
-                                    size = {24}
+                                    size={24}
                                     style={{ right: '80%', color: '#fff' }}
 
                                 />
@@ -66,6 +66,14 @@ export default function App() {
                             headerTitleStyle: {
                                 fontWeight: 'bold',
                             },
+                            headerRight: () => (
+                                <Icon
+                                    name='theme-light-dark'
+                                    size={24}
+                                    style={{ right: '80%', color: '#fff' }}
+
+                                />
+                            ),
                         }}
                     />
                 </Stack.Navigator>
